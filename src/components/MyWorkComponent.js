@@ -10,20 +10,14 @@ const MyWorkComponent = () => {
   const [intervalIds, setIntervalIds] = useState(Array.from({ length: websites.length }, () => null));
   const [isPhone, setIsPhone] = useState(false);
 
+  const handleResize = () => {
+    const newWidth = window.innerWidth;
+    setIsPhone(newWidth > 800 ? false : true);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      // Check the width of the window
-      const isSmallScreen = window.innerWidth < 768; // Adjust the threshold as needed
-      setIsPhone(isSmallScreen);
-    };
-
-    // Call the handleResize function once to set the initial state
     handleResize();
-
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
-
-    // Clean up the event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -70,10 +64,9 @@ const MyWorkComponent = () => {
   return (
     <div className='grid lg:grid-cols-3 grid-cols-2 lg:gap-[5rem] gap-4 my-9'>
       {websites.map((app, index) => {
-        const randomX = Math.floor(Math.random() * 40) + 1; // Generate random number between 1 and 40 for x
-        const randomY = Math.floor(Math.random() * 40) + 1; // Generate random number between 1 and 40 for y
+        
         return (
-          <Draggable key={app.name} defaultPosition={{ x:isPhone ? 0 : randomX, y: isPhone ? 0 : randomY }}>
+          <Draggable key={app.name} defaultPosition={{ x:0, y:0 }}>
             <div 
               className='border cursor-all-scroll border-zinc-200 border-4 bg-zinc-800 overflow-hidden shadow-[8px_8px_0_0_rgb(255,255,255,0.3)]' 
               onMouseEnter={() => handleMouseEnter(index)} 
@@ -83,8 +76,8 @@ const MyWorkComponent = () => {
                 className='w-full'
                 src={`/websites/${app.filename}`} 
                 pixelSize={counts[index]} // Change pixelSize based on hover state
-                width={isPhone ? 200 : 350}
-                height={isPhone ? 100 : 230}
+                width={isPhone ? 200 : 450}
+                height={isPhone ? 100 : 330}
               />
               <Link href={app.url} target='_blank'>
                 <p className='p-2 cursor-context-menu text-center lg:text-sm text-xs text-zinc-500 hover:text-white hover:underline'>{app.name}</p>

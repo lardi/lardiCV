@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/myWork.module.css';
 import MyWorkComponent from './MyWorkComponent';
 
-const MyWorksSection = () => {
+const MyWorksSection = ({windowWidth}) => {
   const [transitionLayers, setTransitionLayers] = useState([]);
 
   useEffect(() => {
