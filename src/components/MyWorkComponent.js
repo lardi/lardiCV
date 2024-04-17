@@ -68,7 +68,7 @@ const MyWorkComponent = () => {
       {websites.map((app, index) => {
         if(window.innerWidth < 800){
           return (
-            <div 
+            <div key={app.name}
               className='border cursor-all-scroll border-zinc-200 border-4 bg-zinc-800 overflow-hidden shadow-[8px_8px_0_0_rgb(255,255,255,0.3)]' 
             >
               <Image
