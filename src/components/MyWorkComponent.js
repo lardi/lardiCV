@@ -11,10 +11,12 @@ const MyWorkComponent = () => {
   const [counts, setCounts] = useState(initialCounts);
   const [intervalIds, setIntervalIds] = useState(Array.from({ length: websites.length }, () => null));
   const [isPhone, setIsPhone] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleResize = () => {
     const newWidth = window.innerWidth;
     setIsPhone(newWidth > 800 ? false : true);
+    setWindowWidth(window.innerWidth);
   };
 
   useEffect(() => {
@@ -66,7 +68,7 @@ const MyWorkComponent = () => {
   return (
     <div className='grid lg:grid-cols-3 grid-cols-2 lg:gap-[5rem] gap-4 my-9'>
       {websites.map((app, index) => {
-        if(window.innerWidth < 800){
+        if(windowWidth < 800){
           return (
             <div key={app.name}
               className='border cursor-all-scroll border-zinc-200 border-4 bg-zinc-800 overflow-hidden shadow-[8px_8px_0_0_rgb(255,255,255,0.3)]' 
