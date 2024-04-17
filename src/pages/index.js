@@ -61,13 +61,13 @@ export default function Home() {
           <LogoComponent />
         </div>
       </section>
-      <section ref={sectionRef} style={{ minHeight: sectionHeight }} >
+      <section ref={sectionRef} >
         <div className='container mx-auto'>
           <h2 className='text-xl pt-9 px-5'>Techfolio <span className='text-sm text-green-800'>{"\u002F\u002F"}Showcasing My Portfolio</span></h2>
         </div>
         <MyWorksSection />
       </section>
-      <section className='px-5'>
+      <section className='p-5'>
         <div className='container mx-auto bottom-0'>
           <h2 className='text-xl my-9 '>Reach me <span className='text-sm text-green-800'>{"\u002F\u002F"}Let&apos;s build beauty together!</span></h2>
           <div className='flex my-2'>

@@ -3,6 +3,8 @@ import websites from '../api/websites';
 import { Pixelify } from "react-pixelify";
 import Draggable from 'react-draggable';
 import Link from 'next/link';
+import Image from 'next/image'
+
 
 const MyWorkComponent = () => {
   const initialCounts = websites.map(() => 20); // Initialize counts for each item
@@ -64,9 +66,26 @@ const MyWorkComponent = () => {
   return (
     <div className='grid lg:grid-cols-3 grid-cols-2 lg:gap-[5rem] gap-4 my-9'>
       {websites.map((app, index) => {
-        
-        return (
-          <Draggable key={app.name} defaultPosition={{ x:0, y:0 }}>
+        if(window.innerWidth < 800){
+          return (
+            <div 
+              className='border cursor-all-scroll border-zinc-200 border-4 bg-zinc-800 overflow-hidden shadow-[8px_8px_0_0_rgb(255,255,255,0.3)]' 
+            >
+              <Image
+                className='w-full grayscale'
+                src={`/websites/${app.filename}`} 
+                width={200}
+                height={90}
+              />
+              <Link href={app.url} target='_blank'>
+                <p className='p-2 cursor-context-menu text-center lg:text-sm text-xs text-zinc-500 hover:text-white hover:underline'>{app.name}</p>
+              </Link>
+            </div>
+
+          )
+        } else {
+          return (
+            <Draggable key={app.name} defaultPosition={{ x:0, y:0 }}>
             <div 
               className='border cursor-all-scroll border-zinc-200 border-4 bg-zinc-800 overflow-hidden shadow-[8px_8px_0_0_rgb(255,255,255,0.3)]' 
               onMouseEnter={() => handleMouseEnter(index)} 
@@ -84,7 +103,8 @@ const MyWorkComponent = () => {
               </Link>
             </div>
           </Draggable>
-        );
+          )
+        }
       })}
     </div>
   );

@@ -20,7 +20,7 @@ const MyWorksSection = ({windowWidth}) => {
 
   return (
     <div className='relative'>
-      <div className={`${styles.sky} h-14`}>
+      <div className={`${styles.sky} h-14 absolute z-[-1]`}>
         {transitionLayers}
         <div className={styles.sky_stars}>
           {/* Manually include your stars here */}
@@ -45,7 +45,7 @@ const MyWorksSection = ({windowWidth}) => {
           {/* Add more stars as needed */}
         </div>
       </div>
-      <div className='absolute top-0 left-0 z-20 w-full'>
+      <div className='top-0 left-0 z-10 w-full'>
         <div className='container mx-auto px-5'>
           <MyWorkComponent />
         </div>
