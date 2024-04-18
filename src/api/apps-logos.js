@@ -7,6 +7,9 @@ const appsLogos = [
     { name: "MySQL", filename: "mysql-logo.png" },
     { name: "Next.js", filename: "nextjs.png" },
     { name: "React", filename: "react-logo.png" },
+    { name: "jQuery", filename: "jquery.png" },
+    { name: "Tailwind CSS", filename: "tw-logo.png" },
+    { name: "DigitalOcean", filename: "do-logo.png" },
     { name: "PhotoShop", filename: "ps.png" },
     { name: "indesign", filename: "indd.png" },
     // Add more apps as needed
